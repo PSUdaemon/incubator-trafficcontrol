@@ -20,13 +20,19 @@ CHECK(
    VALUE IN ('url_sig', 'uri_signing')
 );
 
-ALTER TABLE deliveryservice
+ALTER TABLE IF EXISTS deliveryservice
 ALTER COLUMN signed
 SET DATA TYPE deliveryservice_signature_type
 USING CASE WHEN signed THEN 'url_sig'::text::deliveryservice_signature_type ELSE NULL END;
 
+ALTER TABLE IF EXISTS deliveryservice
+RENAME COLUMN signed TO signing_algorithm;
+
 -- +goose Down
 -- SQL section 'Down' is executed when this migration is rolled back
+ALTER TABLE IF EXISTS deliveryservice
+RENAME COLUMN signing_algorithm TO signed;
+
 ALTER TABLE deliveryservice
 ALTER COLUMN signed
 SET DATA TYPE boolean

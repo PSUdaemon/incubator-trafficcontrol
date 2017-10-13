@@ -173,7 +173,10 @@ Delivery Service
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
   | ``routingName``          | string | The routing name of this deliveryservice, e.g. <routingName>.<xmlId>.cdn.com.                                                        |
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
-  | ``signed``               | string | - null: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                      |
+  | ``signed``               |  bool  | - false: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                       |
+  |                          |        | - true: token based auth is enabled for this deliveryservice.                                                                        |
+  +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
+  | ``signing_algorithm``    | string | - null: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                      |
   |                          |        | - "url_sig": URL Sign token based auth is enabled for this deliveryservice.                                                          |
   |                          |        | - "uri_signing": URI Signing token based auth is enabled for this deliveryservice.                                                   |
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
@@ -246,7 +249,8 @@ Delivery Service
             "regionalGeoBlocking": false,
             "remapText": null,
             "routingName": "foo",
-            "signed": null,
+            "signed": false,
+            "signing_algorithm": null,
             "sslKeyVersion": "0",
             "tenant": "root",
             "tenantId": 1,
@@ -412,7 +416,10 @@ Delivery Service
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
   | ``routingName``          | string | The routing name of this deliveryservice, e.g. <routingName>.<xmlId>.cdn.com.                                                        |
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
-  | ``signed``               | string | - null: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                        |
+  | ``signed``               |  bool  | - false: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                       |
+  |                          |        | - true: token based auth is enabled for this deliveryservice.                                                                        |
+  +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
+  | ``signing_algorithm``    | string | - null: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                        |
   |                          |        | - "url_sig": URL Sign token based auth is enabled for this deliveryservice.                                                          |
   |                          |        | - "uri_signing": URI Signing token based auth is enabled for this deliveryservice.                                                   |
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
@@ -492,7 +499,8 @@ Delivery Service
             "regionalGeoBlocking": false,
             "remapText": null,
             "routingName": "foo",
-            "signed": null,
+            "signed": false,
+            "signing_algorithm": null,
             "sslKeyVersion": "0",
             "tenant": "root",
             "tenantId": 1,
@@ -1940,7 +1948,7 @@ URL Sig Keys
   +----------------------------------------+--------+----------+---------------------------------------------------------------------------------------------+
   | ``>rangeRequestHandling``              | string | yes      | How to handle range requests.                                                               |
   +----------------------------------------+--------+----------+---------------------------------------------------------------------------------------------+
-  | ``>hasSignedURLs``                     | string | yes      | Are Urls signed?                                                                            |
+  | ``>hasSignedURLs``                     | bool   | yes      | Are Urls signed?                                                                            |
   +----------------------------------------+--------+----------+---------------------------------------------------------------------------------------------+
   | ``>hasNegativeCachingCustomization``   | bool   | yes      | Any customization required for negative caching?                                            |
   +----------------------------------------+--------+----------+---------------------------------------------------------------------------------------------+
@@ -1985,7 +1993,7 @@ URL Sig Keys
           "otherOriginSecurity": "",
           "queryStringHandling": "ignore-in-cache-key-and-pass-up",
           "rangeRequestHandling": "range-requests-not-used",
-          "hasSignedURLs": "url_sig",
+          "hasSignedURLs": true,
           "hasNegativeCachingCustomization": true,
           "negativeCachingCustomizationNote": "negative caching instructions",
           "serviceAliases": [
@@ -2157,7 +2165,10 @@ URL Sig Keys
   +------------------------+----------+---------------------------------------------------------------------------------------------------------+
   | routingName            | no       | The routing name of this deliveryservice, e.g. <routingName>.<xmlId>.cdn.com.                           |
   +------------------------+----------+---------------------------------------------------------------------------------------------------------+
-  | signed                 | no       | - null: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.           |
+  | signed                 | no       | - false: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.          |
+  |                        |          | - true: token based auth is enabled for this deliveryservice.                                           |
+  +------------------------+----------+---------------------------------------------------------------------------------------------------------+
+  | signing_algorithm      | no       | - null: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.           |
   |                        |          | - "url_sig": URL Sign token based auth is enabled for this deliveryservice.                             |
   |                        |          | - "uri_signing": URI Signing token based auth is enabled for this deliveryservice.                      |
   +------------------------+----------+---------------------------------------------------------------------------------------------------------+
@@ -2196,7 +2207,8 @@ URL Sig Keys
         "qstringIgnore": 0,
         "rangeRequestHandling": 0,
         "regionalGeoBlocking": false,
-        "signed": null
+        "signed": false,
+        "signing_algorithm": null
     }
 
 
@@ -2332,7 +2344,10 @@ URL Sig Keys
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
   | ``routingName``          | string | The routing name of this deliveryservice, e.g. <routingName>.<xmlId>.cdn.com.                                                        |
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
-  | ``signed``               | string | - null: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                        |
+  | ``signed``               |  bool  | - false: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                       |
+  |                          |        | - true: token based auth is enabled for this deliveryservice.                                                                        |
+  +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
+  | ``signing_algorithm``    | string | - null: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                        |
   |                          |        | - "url_sig": URL Sign token based auth is enabled for this deliveryservice.                                                          |
   |                          |        | - "uri_signing": URI Signing token based auth is enabled for this deliveryservice.                                                   |
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
@@ -2408,7 +2423,8 @@ URL Sig Keys
             "regionalGeoBlocking": false,
             "remapText": null,
             "routingName": "foo",
-            "signed": null,
+            "signed": false,
+            "signing_algorithm": null,
             "sslKeyVersion": "0",
             "tenantId": 1,
             "trRequestHeaders": null,
@@ -2555,7 +2571,10 @@ URL Sig Keys
   +------------------------+----------+---------------------------------------------------------------------------------------------------------+
   | routingName            | no       | The routing name of this deliveryservice, e.g. <routingName>.<xmlId>.cdn.com.                           |
   +------------------------+----------+---------------------------------------------------------------------------------------------------------+
-  | signed                 | no       | - null: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.           |
+  | signed                 | no       | - false: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.          |
+  |                        |          | - true: token based auth is enabled for this deliveryservice.                                           |
+  +------------------------+----------+---------------------------------------------------------------------------------------------------------+
+  | signing_algorithm      | no       | - null: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.           |
   |                        |          | - "url_sig": URL Sign token based auth is enabled for this deliveryservice.                             |
   |                        |          | - "uri_signing": URI Signing token based auth is enabled for this deliveryservice.                      |
   +------------------------+----------+---------------------------------------------------------------------------------------------------------+
@@ -2594,7 +2613,8 @@ URL Sig Keys
         "qstringIgnore": 0,
         "rangeRequestHandling": 0,
         "regionalGeoBlocking": false,
-        "signed": null
+        "signed": false,
+        "signing_algorithm": null
     }
 
 
@@ -2730,7 +2750,10 @@ URL Sig Keys
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
   | ``routingName``          | string | The routing name of this deliveryservice, e.g. <routingName>.<xmlId>.cdn.com.                                                        |
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
-  | ``signed``               | string | - null: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                        |
+  | ``signed``               |  bool  | - false: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                       |
+  |                          |        | - true: token based auth is enabled for this deliveryservice.                                                                        |
+  +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
+  | ``signing_algorithm``    | string | - null: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                        |
   |                          |        | - "url_sig": URL Sign token based auth is enabled for this deliveryservice.                                                          |
   |                          |        | - "uri_signing": URI Signing token based auth is enabled for this deliveryservice.                                                   |
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
@@ -2806,7 +2829,8 @@ URL Sig Keys
             "regionalGeoBlocking": false,
             "remapText": null,
             "routingName": "foo",
-            "signed": null,
+            "signed": false,
+            "signing_algorithm": null,
             "sslKeyVersion": "0",
             "tenantId": 1,
             "trRequestHeaders": null,
@@ -2995,7 +3019,10 @@ URL Sig Keys
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
   | ``routingName``          | string | The routing name of this deliveryservice, e.g. <routingName>.<xmlId>.cdn.com.                                                        |
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
-  | ``signed``               | string | - null: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                        |
+  | ``signed``               |  bool  | - false: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                       |
+  |                          |        | - true: token based auth is enabled for this deliveryservice.                                                                        |
+  +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
+  | ``signing_algorithm``    | string | - null: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                        |
   |                          |        | - "url_sig": URL Sign token based auth is enabled for this deliveryservice.                                                          |
   |                          |        | - "uri_signing": URI Signing token based auth is enabled for this deliveryservice.                                                   |
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
@@ -3071,7 +3098,8 @@ URL Sig Keys
             "regionalGeoBlocking": false,
             "remapText": null,
             "routingName": "foo",
-            "signed": null,
+            "signed": false,
+            "signing_algorithm": null,
             "sslKeyVersion": "0",
             "tenantId": 1,
             "trRequestHeaders": null,
