@@ -16,7 +16,7 @@
 <html lang="en">
 <head></head>
 <body>
-  	<section><%= $full_name ? $full_name . ' |' : '' %> <%= $username %> <%= $email ? '| ' . $email : '' %> has requested a new delivery service for <%= $params->{customer} %>. The details are as follows:
+  <section><%= $full_name ? $full_name . ' |' : '' %> <%= $username %> <%= $email ? '| ' . $email : '' %> has requested a new delivery service for <%= $params->{customer} %>. The details are as follows:
     <table>
         <tbody>
             <tr><th colspan="2"><h4>Service Description</h4></th></tr>
@@ -89,7 +89,7 @@
             </tr>
             <tr>
                 <td>Signed URLs / URL Tokenization:</td>
-                <td><%= $params->{hasSignedURLs} ? 'true' : 'false' %></td>
+                <td><%= $params->{hasSignedURLs} %></td>
             </tr>
             <tr>
                 <td>Negative Caching Customization:</td>

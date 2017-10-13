@@ -154,8 +154,9 @@ Delivery Service
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
   | ``remapText``            | string | Additional raw remap line text.                                                                                                      |
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
-  | ``signed``               |  bool  | - false: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                       |
-  |                          |        | - true: token based auth is enabled for this deliveryservice.                                                                        |
+  | ``signed``               | string | - null: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                        |
+  |                          |        | - "url_sig": URL Sign token based auth is enabled for this deliveryservice.                                                          |
+  |                          |        | - "uri_signing": URI Signing token based auth is enabled for this deliveryservice.                                                   |
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
   | ``sslKeyVersion``        | string |                                                                                                                                      |
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
@@ -231,7 +232,7 @@ Delivery Service
             "regexRemap": null,
             "regionalGeoBlocking": false,
             "remapText": null,
-            "signed": false,
+            "signed": null,
             "sslKeyVersion": "0",
             "trRequestHeaders": null,
             "trResponseHeaders": "Access-Control-Allow-Origin: *",
@@ -381,8 +382,9 @@ Delivery Service
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
   | ``remapText``            | string | Additional raw remap line text.                                                                                                      |
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
-  | ``signed``               |  bool  | - false: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                       |
-  |                          |        | - true: token based auth is enabled for this deliveryservice.                                                                        |
+  | ``signed``               | string | - null: token based auth (see :ref:token-based-auth) is not enabled for this deliveryservice.                                        |
+  |                          |        | - "url_sig": URL Sign token based auth is enabled for this deliveryservice.                                                          |
+  |                          |        | - "uri_signing": URI Signing token based auth is enabled for this deliveryservice.                                                   |
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
   | ``sslKeyVersion``        | string |                                                                                                                                      |
   +--------------------------+--------+--------------------------------------------------------------------------------------------------------------------------------------+
@@ -458,7 +460,7 @@ Delivery Service
             "regexRemap": null,
             "regionalGeoBlocking": false,
             "remapText": null,
-            "signed": false,
+            "signed": null,
             "sslKeyVersion": "0",
             "trRequestHeaders": null,
             "trResponseHeaders": "Access-Control-Allow-Origin: *",
@@ -1185,7 +1187,7 @@ SSL Keys
   +----------------------------------------+--------+----------+---------------------------------------------------------------------------------------------+
   | ``>rangeRequestHandling``              | string | yes      | How to handle range requests.                                                               |
   +----------------------------------------+--------+----------+---------------------------------------------------------------------------------------------+
-  | ``>hasSignedURLs``                     | bool   | yes      | Are Urls signed?                                                                            |
+  | ``>hasSignedURLs``                     | string | yes      | Are Urls signed?                                                                            |
   +----------------------------------------+--------+----------+---------------------------------------------------------------------------------------------+
   | ``>hasNegativeCachingCustomization``   | bool   | yes      | Any customization required for negative caching?                                            |
   +----------------------------------------+--------+----------+---------------------------------------------------------------------------------------------+
@@ -1229,7 +1231,7 @@ SSL Keys
           "otherOriginSecurity": "",
           "queryStringHandling": "ignore-in-cache-key-and-pass-up",
           "rangeRequestHandling": "range-requests-not-used",
-          "hasSignedURLs": true,
+          "hasSignedURLs": 'url_sig',
           "hasNegativeCachingCustomization": true,
           "negativeCachingCustomizationNote": "negative caching instructions",
           "serviceAliases": [

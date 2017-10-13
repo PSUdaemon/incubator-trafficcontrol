@@ -58,9 +58,6 @@ sub index {
 	if ( defined $tenant_id ) {
 		$criteria{'me.tenant_id'} = $tenant_id;
 	}
-	if ( defined $signed ) {
-		$criteria{'me.signed'} = $signed ? 1 : 0;    # converts bool to 0|1
-	}
 
 	my $tenant_utils = Utils::Tenant->new($self);
 	my $tenants_data = $tenant_utils->create_tenants_data_from_db();
@@ -146,7 +143,7 @@ sub index {
 				"regionalGeoBlocking"  => \$row->regional_geo_blocking,
 				"remapText"            => $row->remap_text,
 				"routingName"          => $row->routing_name,
-				"signed"               => \$row->signed,
+				"signed"               => $row->signed,
 				"sslKeyVersion"        => $row->ssl_key_version,
 				"tenantId"		       => $row->tenant_id,
 				"tenant"               => defined( $row->tenant ) ? $row->tenant->name : undef,
@@ -266,7 +263,7 @@ sub show {
 				"regionalGeoBlocking"  => \$row->regional_geo_blocking,
 				"routingName"          => $row->routing_name,
 				"remapText"            => $row->remap_text,
-				"signed"               => \$row->signed,
+				"signed"               => $row->signed,
 				"sslKeyVersion"        => $row->ssl_key_version,
 				"tenantId"             => $row->tenant_id,
 				"tenant"               => defined( $row->tenant ) ? $row->tenant->name : undef,
@@ -972,7 +969,7 @@ sub get_deliveryservices_by_serverId {
 					"regionalGeoBlocking"  => \$row->regional_geo_blocking,
 					"remapText"            => $row->remap_text,
 					"routingName"          => $row->routing_name,
-					"signed"               => \$row->signed,
+					"signed"               => $row->signed,
 					"sslKeyVersion"        => $row->ssl_key_version,
 					"tenantId"             => $row->tenant_id,
 					"tenant"               => defined( $row->tenant ) ? $row->tenant->name : undef,
@@ -1069,7 +1066,7 @@ sub get_deliveryservices_by_userId {
 					"regionalGeoBlocking"  => \$row->regional_geo_blocking,
 					"remapText"            => $row->remap_text,
 					"routingName"          => $row->routing_name,
-					"signed"               => \$row->signed,
+					"signed"               => $row->signed,
 					"sslKeyVersion"        => $row->ssl_key_version,
 					"tenantId"             => $row->tenant_id,
 					"tenant"               => defined( $row->tenant ) ? $row->tenant->name : undef,
