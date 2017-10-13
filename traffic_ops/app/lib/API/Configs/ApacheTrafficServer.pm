@@ -2496,8 +2496,11 @@ sub build_remap_line {
 	if ( defined( $remap->{edge_header_rewrite} ) ) {
 		$text .= " \@plugin=header_rewrite.so \@pparam=" . $remap->{hdr_rw_file};
 	}
-	if ( $remap->{signed} == 1 ) {
+	if ( $remap->{signed} == "url_sig" ) {
 		$text .= " \@plugin=url_sig.so \@pparam=url_sig_" . $remap->{ds_xml_id} . ".config";
+	}
+	elsif ( $remap->{signed} == "uri_signing" ) {
+		$text .= " \@plugin=uri_signing.so \@pparam=uri_signing_" . $remap->{ds_xml_id} . ".config";
 	}
 	if ( $remap->{qstring_ignore} == 2 ) {
 		my $dqs_file = "drop_qstring.config";
