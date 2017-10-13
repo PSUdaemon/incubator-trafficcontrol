@@ -211,7 +211,7 @@ sub read {
 				"display_name"                => $row->display_name,
 				"dscp"                        => $row->dscp,
 				"routing_name"                => $row->routing_name,
-				"signed"                      => \$row->signed,
+				"signed"                      => $row->signed,
 				"qstring_ignore"              => $row->qstring_ignore,
 				"geo_limit"                   => $row->geo_limit,
 				"geo_limit_countries"         => $row->geo_limit_countries,
@@ -731,7 +731,7 @@ sub url_sig {
 	my $ds_name    = shift;
 	my $signed    = shift;
 
-	if ( defined($signed) && $signed == 1 ) {
+	if ( defined($signed) && $signed == "url_sig" ) {
 		my $fname = "url_sig_" . $ds_name . ".config";
 		my $ats_cfg_loc =
 			$self->db->resultset('Parameter')->search( { -and => [ name => 'location', config_file => 'remap.config' ] } )->get_column('value')->single();
